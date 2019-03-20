@@ -78,6 +78,9 @@ class sfWebDebug
     {
       $this->setPanel('time', new sfWebDebugPanelTimer($this));
     }
+    if (class_exists('sfWebDebugPanelCouchdb')) {
+      $this->setPanel('couchdb', new sfWebDebugPanelCouchdb($this));
+    }
 
     $this->setPanel('mailer', new sfWebDebugPanelMailer($this));
   }
