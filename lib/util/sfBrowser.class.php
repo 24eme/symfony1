@@ -36,6 +36,10 @@ class sfBrowser extends sfBrowserBase
     // we register a fake rendering filter
     sfConfig::set('sf_rendering_filter', array('sfFakeRenderingFilter', null));
 
+    foreach($this->additionnalsConfig as $keyConfig => $valueConfig) {
+        sfConfig::set($keyConfig, $valueConfig);
+    }
+
     $this->resetCurrentException();
 
     // dispatch our request
@@ -130,6 +134,10 @@ class sfBrowser extends sfBrowserBase
   public function getUser()
   {
     return $this->context->getUser();
+  }
+
+  public function setAdditionnalsConfig($additionnalsConfig) {
+      $this->additionnalsConfig = $additionnalsConfig;
   }
 
   /**
