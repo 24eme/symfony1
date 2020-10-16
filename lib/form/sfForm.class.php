@@ -944,7 +944,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    */
   public function isCSRFProtected()
   {
-    return null !== $this->validatorSchema[self::$CSRFFieldName];
+    return self::$CSRFFieldName && isset($this->validatorSchema[self::$CSRFFieldName]) && (null !== $this->validatorSchema[self::$CSRFFieldName]);
   }
 
   /**
