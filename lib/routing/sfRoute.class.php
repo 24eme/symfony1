@@ -285,7 +285,7 @@ class sfRoute implements Serializable
       switch ($token[0])
       {
         case 'variable':
-          if (!$optional || !isset($this->defaults[$token[3]]) || $parameters[$token[3]] != $this->defaults[$token[3]])
+          if (!$optional || !isset($this->defaults[$token[3]]) || (isset($parameters[$token[3]]) && isset($this->defaults[$token[3]]) && ($parameters[$token[3]] != $this->defaults[$token[3]])))
           {
             $url[] = urlencode($parameters[$token[3]]);
             $optional = false;
@@ -791,7 +791,7 @@ class sfRoute implements Serializable
       }
       else
       {
-        $this->defaults[$key] = urldecode($value);
+        $this->defaults[$key] = ($value) ? urldecode($value) : '';
       }
     }
   }
@@ -845,17 +845,27 @@ class sfRoute implements Serializable
     }
   }
 
-  public function serialize()
+  public function serialize(): string
+  {
+    return serialize($this->__serialize());
+  }
+
+  public function __serialize(): array
   {
     // always serialize compiled routes
     $this->compile();
     // sfPatternRouting will always re-set defaultParameters, so no need to serialize them
-    return serialize(array($this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken));
+    return array($this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken);
   }
 
-  public function unserialize($data)
+  public function unserialize(string $serialized)
   {
-    list($this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken) = unserialize($data);
+    $this->__unserialize(unserialize($serialized));
+  }
+
+  public function __unserialize(array $unserialized)
+  {
+    list($this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken) = $unserialized;
     $this->compiled = true;
   }
 }
