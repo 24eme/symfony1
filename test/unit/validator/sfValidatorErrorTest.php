@@ -66,12 +66,12 @@ class NotSerializable implements Serializable
     throw new Exception('Not serializable');
   }
 
-  public function unserialize(string $serialized)
+  public function unserialize($serialized)
   {
     throw new Exception('Not serializable');
   }
 
-  public function __unserialize(array $unserialized)
+  public function __unserialize($unserialized)
   {
     throw new Exception('Not serializable');
   }

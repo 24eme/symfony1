@@ -889,12 +889,12 @@ class sfWebResponse extends sfResponse
    * @see sfResponse
    * @inheritdoc
    */
-  public function unserialize(string $serialized)
+  public function unserialize($serialized)
   {
     $this->__unserialize(unserialize($serialized));
   }
 
-  public function __unserialize(array $unserialized)
+  public function __unserialize($unserialized)
   {
     list($this->content, $this->statusCode, $this->statusText, $this->options, $this->headerOnly, $this->headers, $this->metas, $this->httpMetas, $this->stylesheets, $this->javascripts, $this->slots) = $unserialized;
   }

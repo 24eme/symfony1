@@ -238,7 +238,7 @@ class sfValidatorErrorSchema extends sfValidatorError implements ArrayAccess, It
    *
    * @return bool true if the error exists, false otherwise
    */
-  public function offsetExists(mixed $offset): bool
+  public function offsetExists($offset): bool
   {
     return isset($this->errors[$offset]);
   }
@@ -250,7 +250,7 @@ class sfValidatorErrorSchema extends sfValidatorError implements ArrayAccess, It
    *
    * @return sfValidatorError A sfValidatorError instance
    */
-  public function offsetGet(mixed $name): mixed
+  public function offsetGet($name): mixed
   {
     return isset($this->errors[$name]) ? $this->errors[$name] : null;
   }
@@ -263,7 +263,7 @@ class sfValidatorErrorSchema extends sfValidatorError implements ArrayAccess, It
    *
    * @throws LogicException
    */
-  public function offsetSet(mixed $offset, mixed $value): void
+  public function offsetSet($offset,$value): void
   {
     throw new LogicException('Unable update an error.');
   }
@@ -273,7 +273,7 @@ class sfValidatorErrorSchema extends sfValidatorError implements ArrayAccess, It
    *
    * @param string $offset  (ignored)
    */
-  public function offsetUnset(mixed $offset): void
+  public function offsetUnset($offset): void
   {
   }
 
@@ -320,12 +320,12 @@ class sfValidatorErrorSchema extends sfValidatorError implements ArrayAccess, It
    * @param string $serialized  A serialized sfValidatorError instance
    *
    */
-  public function unserialize(string $serialized)
+  public function unserialize($serialized)
   {
    $this->__unserialize(unserialize($serialized));
   }
 
-  public function __unserialize(array $unserialized)
+  public function __unserialize($unserialized)
   {
     list($this->validator, $this->arguments, $this->code, $this->message, $this->errors, $this->globalErrors, $this->namedErrors) = $unserialized;
   }

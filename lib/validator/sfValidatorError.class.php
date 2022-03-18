@@ -154,12 +154,12 @@ class sfValidatorError extends Exception implements Serializable
    * @param string $serialized  A serialized sfValidatorError instance
    *
    */
-  public function unserialize(string $serialized)
+  public function unserialize($serialized)
   {
    $this->__unserialize(unserialize($serialized));
   }
 
-  public function __unserialize(array $unserialized)
+  public function __unserialize($unserialized)
   {
     list($this->validator, $this->arguments, $this->code, $this->message) = $unserialized;
   }
