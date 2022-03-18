@@ -182,12 +182,12 @@ class sfViewParameterHolder extends sfParameterHolder
    *
    * @param string $serialized The serialized instance data
    */
-  public function unserialize(string $serialized)
+  public function unserialize($serialized)
   {
    $this->__unserialize(unserialize($serialized));
   }
 
-  public function __unserialize(array $unserialized)
+  public function __unserialize($unserialized)
   {
     list($this->parameters, $escapingMethod, $escaping) = $unserialized;
 

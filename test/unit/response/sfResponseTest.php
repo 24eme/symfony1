@@ -14,8 +14,8 @@ class myResponse extends sfResponse
 {
   function serialize(): string {}
   function __serialize(): array {}
-  function unserialize(string $serialized)
-  function __unserialize(array $unserialized)
+  function unserialize($serialized)
+  function __unserialize($unserialized)
 }
 
 class fakeResponse

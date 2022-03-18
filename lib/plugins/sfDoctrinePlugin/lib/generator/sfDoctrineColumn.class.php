@@ -349,12 +349,12 @@ class sfDoctrineColumn implements ArrayAccess
     return $this->table;
   }
 
-  public function offsetExists(mixed $offset): bool
+  public function offsetExists($offset): bool
   {
     return isset($this->definition[$offset]);
   }
 
-  public function offsetSet(mixed $offset, mixed $value): void
+  public function offsetSet($offset,$value): void
   {
     $this->definition[$offset] = $value;
   }
@@ -364,7 +364,7 @@ class sfDoctrineColumn implements ArrayAccess
     return $this->definition[$offset];
   }
 
-  public function offsetUnset(mixed $offset): void
+  public function offsetUnset($offset): void
   {
     unset($this->definition[$offset]);
   }

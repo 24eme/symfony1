@@ -309,7 +309,7 @@ class sfValidatorSchema extends sfValidatorBase implements ArrayAccess
    *
    * @return bool true if the schema has a field with the given name, false otherwise
    */
-  public function offsetExists(mixed $offset): bool
+  public function offsetExists($offset): bool
   {
     return isset($this->fields[$offset]);
   }
@@ -321,7 +321,7 @@ class sfValidatorSchema extends sfValidatorBase implements ArrayAccess
    *
    * @return sfValidatorBase The sfValidatorBase instance associated with the given name, null if it does not exist
    */
-  public function offsetGet(mixed $name): mixed
+  public function offsetGet($name): mixed
   {
     return isset($this->fields[$name]) ? $this->fields[$name] : null;
   }
@@ -347,7 +347,7 @@ class sfValidatorSchema extends sfValidatorBase implements ArrayAccess
    *
    * @param string $name
    */
-  public function offsetUnset(mixed $name): void
+  public function offsetUnset($name): void
   {
     unset($this->fields[$name]);
   }
